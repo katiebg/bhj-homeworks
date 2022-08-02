@@ -2,8 +2,8 @@ const arrowRight = document.getElementsByClassName("slider__arrow_next");
 const arrowLeft = document.getElementsByClassName("slider__arrow_prev");
 let slides = Array.from(document.querySelectorAll("div.slider__items > div"));
 
-function changeSlide (side) {
-    let idxActiveSlide = slides.findIndex((element,idx ) => element.classList.contains("slider__item_active"));
+function changeSlide(side) {
+    let idxActiveSlide = slides.findIndex((element, idx) => element.classList.contains("slider__item_active"));
     slides[idxActiveSlide].classList.remove("slider__item_active");
     if (side === "left") {
         if (idxActiveSlide === 0) {
@@ -21,5 +21,7 @@ function changeSlide (side) {
     }
 }
 
-arrowLeft.onclick = changeSlide("left");
-arrowRight.onclick = changeSlide("right");
+let resultLeft = () => { return changeSlide("left"); }
+let resultRight = () => { changeSlide("right"); }
+arrowLeft.onclick = resultLeft;
+arrowRight.onclick = resultRight;
