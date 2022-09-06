@@ -12,8 +12,8 @@ let timerId = setTimeout(function request() {
         activeCase = rotatorCase.item(0);
         activeCase.classList.add("rotator__case_active");
     }
-    activeCase.style.color = activeCase.getAttribute('dataColor');
-    delay = activeCase.getAttribute('dataSpeed');
+    activeCase.style.color = activeCase.getAttribute('data-color');
+    delay = activeCase.getAttribute('data-speed');
 
     timerId = setTimeout(request, delay );
   
