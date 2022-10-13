@@ -17,21 +17,15 @@ class Game {
   }
 
   registerEvents() {
-    this.currentSymbol = document.querySelector('.symbol_current').toLowerCase();
-    let typedSymbol;
-    let checkSymbol = (e) => {
-      typedSymbol = e.key.toLowerCase();
-      if (typedSymbol === this.currentSymbol) {
-        this.currentSymbol.classList.remove("symbol_current");
-        if (this.currentSymbol.nextElementSibling) {
-          this.currentSymbol.nextElementSibling.classList.add("symbol_current")
-        }
+    window.addEventListener('keyup', (e) => {
+      if (e.key.toLowerCase() === this.currentSymbol.textContent) {
+        
         return this.success();
-      } else {
+      } 
+      else {
         return this.fail();
       }
-    }
-    window.addEventListener('keyup', checkSymbol);
+      })
   }    
 
 
