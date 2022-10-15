@@ -68,11 +68,13 @@ class Autocomplete {
   }
 
   getMatches( text ) {
-    let arrayOfelements;
-    for (elements of this.input.option){
-      if (elements.textContent.includes(text));
-        arrayOfelements.push({text: element.textContent, value: elements.value});
+    let arrayOfElements = [];
+    for (let element of this.input.querySelectorAll("option")){
+      if (element.textContent.includes(text)){
+      arrayOfElements.push({text: element.textContent, value: element.value});
     }
+    }
+    return arrayOfElements;
 
     /*
       TODO: этот метод нужно дописать
@@ -87,12 +89,6 @@ class Autocomplete {
         value: 'Содержимое атрибута value'
       }
     */
-    return [
-      {
-        text: 'Чубакка',
-        value: '1'
-      }
-    ];
   }
 }
 
