@@ -36,6 +36,8 @@ chatInput.addEventListener("keyup", (e) => {
         messageRobot = messages.querySelectorAll(".message");
         messageTextRob = messageRobot.item(messageRobot.length - 1).querySelector(".message__text")
         messageTextRob.textContent = robotMessages[i%robotMessages.length];
+        messageTimeRob = messageRobot.item(messageRobot.length - 1).querySelector(".message__time");
+        messageTimeRob.textContent = date.getHours() + ':' + date.getMinutes();
         i++;
         } 
 
