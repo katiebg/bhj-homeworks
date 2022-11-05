@@ -1,14 +1,16 @@
 const tasksInput = document.querySelector(".tasks__input")
 const tasksList = document.querySelector(".tasks__list");
-tasksInput.addEventListener("keyup", (e) => {
-    console.log(1)
+const addtask = document.querySelector(".tasks__add");
+let dataId = 1;
+addtask.addEventListener("click", (e) => {
     e.preventDefault();
-    if (e.key == "Enter") {
+})
+tasksInput.addEventListener("keyup", (e) => {
+    e.preventDefault();
+    if (e.key === "Enter") {
         textTask = tasksInput.value;
-        console.log(2)
         e.preventDefault();
-        if (textTask != ""){
-            console.log(4);
+        if (textTask != "") {
             tasksList.innerHTML += `
                 <div class="task">
                     <div class="task__title">
@@ -17,9 +19,13 @@ tasksInput.addEventListener("keyup", (e) => {
                     <a href="#" class="task__remove">&times;</a>
                 </div>
             `;
-            tasksInput.value = ' ';
-            console.log(3)
+            tasksInput.value = "";
         }
     }
+    tasksList.querySelectorAll(".task").forEach((item) => {
+            item.querySelector(".task__remove").addEventListener("click", () => {
+                item.remove();
+            })
+    })
 })
 
