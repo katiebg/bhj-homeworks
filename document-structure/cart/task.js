@@ -29,7 +29,7 @@ for (let i = 0; i < products.length; i++) {
     console.log(prodImg)
 
     oneProduct[0].add.addEventListener("click", () => {
-        if (oneProduct[0].flag === 1) {
+        if (checkProduct (prodId) == true) {
             let cartProducts = Array.from(cart.querySelectorAll(".cart__product"));
             cartProducts.forEach((el) => {
                 if (el.dataset.id == prodId) {
@@ -40,7 +40,7 @@ for (let i = 0; i < products.length; i++) {
             })
 
         }
-        if (oneProduct[0].flag === 0) {
+        if (checkProduct (prodId) == false) {
             cart.insertAdjacentHTML('beforeEnd',
                 `<div class="cart__product" data-id="${prodId}">
                         <img class="cart__product-image" src="${prodImg}">
@@ -52,5 +52,10 @@ for (let i = 0; i < products.length; i++) {
 
         oneProduct[0].flag = 1;
     });
+}
+
+function checkProduct (idItem){
+    if (Array.from(cart.querySelectorAll(".cart__product")).find(item => item.getAttribute("data-id") == idItem) !== undefined) return true;
+    else return false;
 }
 
